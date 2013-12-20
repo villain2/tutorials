@@ -89,7 +89,16 @@ function gameOver() {
         resetEnemy(bmp);
     }
     stage.update();
+    canvas.onclick      = handleClick;
 
+}
+
+function handleClick() {
+    canvas.onclick      = null;
+    stage.removeChild(gameTxt);
+    score               = 0;
+
+    play                = true;
 }
 
 
