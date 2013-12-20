@@ -33,7 +33,7 @@ function createShips(event) {
     var image       = event.target;
     var container   = new createjs.Container();
     stage.addChild(container);
-    var maxNumShips = 5;
+    var maxNumShips = 25;
     bmpList         = [];
 
     for(var i = 0; i < maxNumShips; i++) {
@@ -51,7 +51,7 @@ function createShips(event) {
 }
 
 function resetEnemy(enemy) {
-    enemy.x          = canvas.width - Math.random()*500;
+    enemy.x          = canvas.width - Math.random()*800;
     enemy.y          = canvas.height * Math.random()|0;
     enemy.speed      = ( Math.random()*4) + 3;
 }
