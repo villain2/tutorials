@@ -10,9 +10,8 @@ var bmpList;
 var bitmap;
 
 function init() {
-    canvas      = document.getElementById("canvas");
-    console.log(canvas);
-    stage       = new Stage(canvas);
+    canvas      = document.getElementById("stage");
+    stage       = new createjs.Stage(canvas);
     score       = 0;
 
     bg          = new Image();
@@ -25,22 +24,22 @@ function init() {
 }
 
 function setBG(event) {
-    var bg          = new Bitmap(bg);
-    stage.addChild(bg);
+    var background      = new createjs.Bitmap(bg);
+    stage.addChild(background);
     stage.update();
 }
 
 function createShips(event) {
     var image       = event.target;
-    var container   = new Container();
+    var container   = new createjs.Container();
     stage.addChild(container);
-    var l           = 5;
+    var maxNumShips = 5;
     bmpList         = [];
 
-    for(var i = 0; i < l; i++) {
-        bitmap          = new Bitmap(image);
+    for(var i = 0; i < maxNumShips; i++) {
+        bitmap          = new createjs.Bitmap(image);
         container.addChild(bitmap);
-        bitmap.name             = "ship" + i;
+        bitmap.name         = "ship" + i;
         resetEnemy(bitmap);
         bitmap.regX         = bitmap.image.width/210;
         bitmap.regY         = bitmap.image.height/210;
@@ -52,7 +51,7 @@ function createShips(event) {
 }
 
 function resetEnemy(enemy) {
-    ship.x          = canvas.width - Math.random()*500;
-    ship.y          = canvas.height - Math.random()|0;
-    ship.speed      = ( Math.random()*4) + 3;
+    enemy.x          = canvas.width - Math.random()*500;
+    enemy.y          = canvas.height * Math.random()|0;
+    enemy.speed      = ( Math.random()*4) + 3;
 }
