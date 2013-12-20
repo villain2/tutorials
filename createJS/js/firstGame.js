@@ -9,6 +9,9 @@ function init() {
     stage       = new createjs.Stage(canvas);
     score       = 0;
 
+    canvas.onmousedown      = onMouseDown;
+    canvas.onmouseup        = onMouseUp;
+
     bg          = new Image();
     bg.src      = "img/space.jpg";
     bg.onload   = setBG;
@@ -59,6 +62,12 @@ function resetEnemy(enemy) {
 }
 
 function tick() {
+    //check for clicking
+    if(!clicked && stage.mouseX && stage.mouseY) {
+        mouseTarget     = stage.getObjectUnderPoint(stage.mouseX, stage.mouseY);
+    }
+
+    //move ships
     if(play == true) {
         var l       = bmpList.length;
         for(var i = 0; i < l; i++) {
@@ -99,6 +108,18 @@ function handleClick() {
     score               = 0;
 
     play                = true;
+}
+
+function onMouseDown() {
+    if(!e) {
+        var e       = window.event;
+    }
+    clicked     = true;
+
+}
+
+function onMouseUp() {
+    clicked     = false;
 }
 
 
