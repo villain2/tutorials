@@ -2,12 +2,7 @@
 
 window.onload = init();
 
-var canvas;
-var stage;
-var bg;
-var score;
-var bmpList;
-var bitmap;
+var canvas, stage, bg, score, bmpList, bitmpa, txt, play, gameTxt;
 
 function init() {
     canvas      = document.getElementById("stage");
@@ -47,11 +42,55 @@ function createShips(event) {
         bmpList.push(bitmap);
     }
 
-    stage.update();
+    txt         = new createjs.Text("Score: 0", "14px Tahoma", "#ffffff");
+    txt.textBaseline = "top";
+    txt.x       = 20;
+    txt.y       = 20;
+    stage.addChild(txt);
+
+    play        = true;
+    createjs.Ticker.addEventListener('tick', tick);
 }
 
 function resetEnemy(enemy) {
-    enemy.x          = canvas.width - Math.random()*800;
+    enemy.x          = canvas.width - Math.random()*1000;
     enemy.y          = canvas.height * Math.random()|0;
-    enemy.speed      = ( Math.random()*4) + 3;
+    enemy.speed      = ( Math.random()*5) + 2;
 }
+
+function tick() {
+    if(play == true) {
+        var l       = bmpList.length;
+        for(var i = 0; i < l; i++) {
+            var bmp     = bmpList[i];
+            if(bmp.x < 3200) {
+                bmp.x += bmp.speed;
+            } else {
+                gameOver();
+                console.log('game over');
+            }
+        }
+    }
+    txt.text            = "Score: " + score;
+    stage.update();
+}
+
+function gameOver() {
+    gameTxt             = new createjs.Text("Game Over\n\n", "36px Arial", "#f3f4f5");
+    gameTxt.text        += "Click to play again";
+    gameTxt.textAlign   = "center";
+    gameTxt.x           = canvas.width / 2;
+    gameTxt.y           = canvas.height / 4;
+    stage.addChild(gameTxt);
+    play                = false;
+    var l               = bmpList.length;
+    for(var i=0; i < l; i++) {
+        var bmp     = bmpList[i];
+        resetEnemy(bmp);
+    }
+    stage.update();
+
+}
+
+
+
