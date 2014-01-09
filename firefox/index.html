@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<title>Firefox box scaling issue</title>
+	<style>
+		body, html {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+		.box {
+
+			    cursor: pointer;
+			    margin-bottom: 15px;
+			    padding: 5px;
+			    -moz-user-select: none;
+			    font-family: 'SourceSansProCust-Regular',Sans-Serif;
+			    font-size: 1.25em;
+			    font-weight: normal;
+			    font-style: normal;
+			    color: rgb(0, 0, 0);
+			    vertical-align: middle;
+			    border: 1px solid rgb(0, 0, 0);
+			    background-color: rgb(255, 255, 255);
+			    min-height: 55px;
+			    position: relative;
+			    -moz-box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box">
+		<h1>This is a box</h1>
+		<p>It should scale with elements in it.</p>
+	</div>
+</body>
+</html>

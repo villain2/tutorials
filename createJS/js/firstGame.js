@@ -2,7 +2,7 @@
 
 window.onload = init();
 
-var canvas, stage, bg, score, bmpList, bitmpa, txt, play, gameTxt;
+var canvas, stage, bg, score, bmpList, bitmpa, txt, play, gameTxt, clicked;
 
 function init() {
     canvas      = document.getElementById("stage");
