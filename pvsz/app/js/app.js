@@ -10,8 +10,14 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 run(['$rootScope', function($rootScope) {
+    //set global variables
     $rootScope.gameField        = [];
     $rootScope.stage            = new createjs.Stage("gameGrid");
+    $rootScope.actorContainer;
+    $rootScope.actor;
+    $rootScope.movingActor;
+    $rootScope.actorMoving      = false;
+    $rootScope.selector;
 }]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/view1', {templateUrl: 'partials/level1.html', controller: 'Level1Ctrl'});

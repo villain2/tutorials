@@ -2,7 +2,7 @@
 
 /* Controllers */
 angular.module('myApp.controllers', []).
-controller('Level1Ctrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+controller('Level1Ctrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window) {
     setupField();
     drawField();
     
@@ -14,7 +14,6 @@ controller('Level1Ctrl', ['$scope', '$rootScope', function($scope, $rootScope) {
                 $rootScope.gameField[i][j]=0;
             }
         }
-        console.log($rootScope.gameField);
     }
     
     function drawField() {
@@ -34,36 +33,13 @@ controller('Level1Ctrl', ['$scope', '$rootScope', function($scope, $rootScope) {
         }
         
         stage.update();
-        
     }
-   /* var gameField;
-    var stage    = new createjs.Stage("gameGrid");
-    
-  	setupField();
-  	drawField();
-
-    function setupField() {
-        gameField 		= new Array();
-        for(var i=0; i < 5; i++) {
-            gameField[i]		= new Array();
-            for(var j=0; j < 9; j++) {
-                gameField[i][j];
-            }
-        }
-        console.log(gameField);
-    }
-    
-    function drawField() {
-        console.log(stage);
-        var circle = new createjs.Shape();
-        circle.graphics.beginFill("red").drawCircle(0, 0, 50);
-        circle.x = 100;
-        circle.y = 100;
-        stage.addChild(circle);
-        stage.update();
-    }*/
     
 }])
 .controller('MyCtrl2', ['$scope', function($scope) {
 
 }]);
+
+var GameController = function ($scope) {
+    console.log('okay');
+}
