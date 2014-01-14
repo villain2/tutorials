@@ -15,7 +15,7 @@
 		EditorTest.instanceCache.push(params.dataJSON);
 		EditorTest.ResetInstanceCache.push(JSON.parse(JSON.stringify(params.dataJSON)));
 		EditorTest.PartialsPath			= params.partialsPath;
-		
+
 		params.container.innerHTML		= '<editortest instanceid=' + instanceID + ' type=' + params.type + '><div ng-view></div></editortest>';
 
 		//manual way to start angular app --- works the same way as putting ngApp on a div but you're 
@@ -67,39 +67,3 @@
 		})
 	}])
 }( EditorTest.Configs = EditorTest.Configs || {} ));
-
-
-
-
-/*** START ***/
-$(document).ready(function () 
-{
-	$.ajax({
-		url: 'json/index.json'
-	}).done(function (json) 
-	{
-		var dataJSON;
-		if(typeof json == "string")
-		{
-			dataJSON 		= JSON.parse(json);
-		}
-		else 
-		{
-			dataJSON		= json;
-		}
-
-		//set the container
-		var container 		= $('#mainContainer')[0];
-
-		//parameters to start
-		var params 			= {
-			type: "default",
-			container: container,
-			partialsPath: "partials",
-			dataJSON: dataJSON
-		}
-
-		//start EditorTest class
-		EditorTest.init(params);
-	})
-});

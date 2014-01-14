@@ -9,5 +9,11 @@
 		scope.instanceID			= parseInt($attrs.instanceid);
 
 		console.log('track this');
-	}
+
+		function doSomething () {
+			console.log('do something');
+			var x 			= 1;
+			var y  			= -10;
+		}
+	};
 }( EditorTest.Controllers = EditorTest.Controllers || {} ));
