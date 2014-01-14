@@ -1,0 +1,11 @@
+@mixin fGeorgia ($fontSize, $fontWeight, $fontColor) {
+	font-size: $fontSize;
+	font-weight: $fontWeight;
+	color: $fontColor;
+	font-family: "Georgia", "Times New Roman", sans-serif;
+}
+
+.mainContainer {
+	@include fGeorgia('1.5em', 'normal', '#ffffff');
+	padding: 12px;
+}

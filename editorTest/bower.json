@@ -1,0 +1,25 @@
+{
+  "name": "editorTest",
+  "version": "0.0.1",
+  "homepage": "https://github.com/villain2/tutorials",
+  "authors": [
+    "villain2 <djvillain@hotmail.com>"
+  ],
+  "description": "Breaking down Josh's Angular App so I can understand how he made it.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "_2.0.3",
+    "jquery.ui": "~1.10.3",
+    "angular": "~1.10.2",
+    "angular-ui": "~0.4.0",
+    "foundation": "~5.0.0"
+  }
+}
