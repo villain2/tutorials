@@ -1,0 +1,25 @@
+{
+  "name": "Box2D",
+  "version": "0.0.1",
+  "homepage": "https://github.com/villain2/tutorials",
+  "authors": [
+    "villain2 <djvillain@hotmail.com>"
+  ],
+  "description": "A test of Box2D JS for the future projects at CE",
+  "keywords": [
+    "box2d",
+    "js",
+    "javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3"
+  }
+}

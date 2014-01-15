@@ -1,0 +1,6 @@
+@mixin fGeorgia ($fontSize, $fontColor, $fontWeight) {
+	font-size: $fontSize;
+	color: $fontColor;
+	font-weight: $fontWeight;
+	font-family: "Georgia", "Times New Roman", sans-serif;
+}

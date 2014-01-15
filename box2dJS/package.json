@@ -1,0 +1,12 @@
+{
+  "name": "Box2D",
+  "version": "0.0.1",
+  "devDependencies": {
+    "node-sass": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt": "~0.4.1",
+    "grunt-sass": "~0.8.0",
+    "load-grunt-tasks": "~0.2.0",
+    "time-grunt": "~0.2.3"
+  }
+}
