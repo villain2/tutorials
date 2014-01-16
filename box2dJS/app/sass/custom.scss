@@ -4,3 +4,13 @@
 	font-weight: $fontWeight;
 	font-family: "Georgia", "Times New Roman", sans-serif;
 }
+
+.mainContainer {
+	width: 100%;
+	text-align: center;
+}
+
+canvas {
+	margin: 0 auto;
+	background: #333333;
+}

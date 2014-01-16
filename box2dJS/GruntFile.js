@@ -5,6 +5,16 @@ module.exports = function (grunt)
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		uglify: {
+			options: {
+				mangle: false
+			},
+			my_target: {
+				files: {
+					'app/js/Main.min.js': ['app/js/Main.js']
+				}
+			}
+		},
 		concat: {
 			options: {
 				separator: '\n\n',
@@ -16,7 +26,7 @@ module.exports = function (grunt)
 				'**/ \n\n'
 			},
 			dist: {
-				src: ['app/js/js/mondernizr.js', 'app/js/foundatin.min.js', 'app/js/jquery.js', 'app/js/Main.js'],
+				src: ['app/js/modernizr.js', 'app/js/vendor/Box2dWeb-2.1.a.3.min.js', 'app/js/foundatin.min.js', 'app/js/vendor/jquery.js', 'app/lib/angular/angular.min.js', 'app/lib/angular/angular-route.min.js', 'app/js/Main.min.js'],
 				dest: 'app/js/Box2d.js'
 			}
 		},
@@ -37,6 +47,7 @@ module.exports = function (grunt)
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	//build task
 	grunt.registerTask('build', 'Box2DTest Build Script', function ()
@@ -44,5 +55,5 @@ module.exports = function (grunt)
 		//build script
 	});
 
-	grunt.registerTask('default', ['sass', 'concat']);
+	grunt.registerTask('default', ['sass', 'uglify', 'concat']);
 }
