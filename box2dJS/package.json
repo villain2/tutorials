@@ -7,6 +7,7 @@
     "grunt": "~0.4.1",
     "grunt-sass": "~0.8.0",
     "load-grunt-tasks": "~0.2.0",
-    "time-grunt": "~0.2.3"
+    "time-grunt": "~0.2.3",
+    "grunt-contrib-sass": "~0.6.0"
   }
 }

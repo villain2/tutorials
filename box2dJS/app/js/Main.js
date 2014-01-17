@@ -41,7 +41,7 @@ Connections Education
 		fixDef.shape			= new b2PolygonShape;
 		
 		fixDef.shape.SetAsBox(20, 2);
-		bodyDef.position.Set(10, 600/30 + 1.8);
+		bodyDef.position.Set(10, 400/30 + 1.8);
 		world.CreateBody(bodyDef).CreateFixture(fixDef);
 		bodyDef.position.Set(10, -1.8);
 		world.CreateBody(bodyDef).CreateFixture(fixDef);

@@ -31,23 +31,27 @@ module.exports = function (grunt)
 			}
 		},
 		sass: {
-			options: {
-				includePaths: ['/app/sass']
-			},
 			dist: {
 				options: {
-					//outputStyle: 'compressed'
+					style: 'compressed'
 				},
 				files: {
 					'app/css/custom.css': 'app/sass/custom.scss'
 				}
 			}
+		},
+		watch: {
+			css: {
+				files: '**/*.scss',
+				tasks: ['sass']
+			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	//build task
 	grunt.registerTask('build', 'Box2DTest Build Script', function ()
@@ -56,4 +60,5 @@ module.exports = function (grunt)
 	});
 
 	grunt.registerTask('default', ['sass', 'uglify', 'concat']);
+	grunt.registerTask('dev', ['sass', 'concat']);
 }
