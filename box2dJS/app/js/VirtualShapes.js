@@ -13,49 +13,11 @@ Connections Education
 	VirtualShapes.Controllers 		= {};
 	VirtualShapes.Directives 		= {};
 
-	VirtualShapes.init = function ()
+	VirtualShapes.init = function (params)
 	{
 		console.log('shape box dim: ' + 800/3);
 		console.log('shape box dim: ' + 600/3);
 
-		angular.bootstrap(params.container, ['VSApp'])
-	}
+		angular.bootstrap(params.container, ["virtualshapes"]);
+	};
 }(window.VirtualShapes	= window.VirtualShapes || {} ));
-
-/*** MODULES ***/
-(function (Modules, undefined)
-{
-	//start angular
-	Modules.VirtualShapes = angular.module('VSApp', ['ngRoute']);
-}(VirtualShapes.Modules = VirtualShapes.Modules || {} ));
-
-
-
-
-
-/*** CONFIG ***/
-(function( Configs, undefined)
-{
-	VirtualShapes.Modules.VirtualShapes.config(['routeProvider', function ( $routeProvider )
-	{
-		$routeProvider.
-		otherwise(
-		{
-			redirectTo: '/'
-		})
-	}])
-}(VirtualShapes.Configs = VirtualShapes.Configs || {} ));
-
-
-
-
-
-
-
-
-$(document).ready(function () 
-{
-	VirtualShapes.init();
-})
-
-
