@@ -26,7 +26,7 @@ module.exports = function (grunt)
 				'**/ \n\n'
 			},
 			dist: {
-				src: ['app/js/modernizr.js', 'app/js/vendor/Box2dWeb-2.1.a.3.min.js', 'app/js/foundatin.min.js', 'app/js/vendor/jquery.js', 'app/lib/angular/angular.min.js', 'app/lib/angular/angular-route.min.js', 'app/js/Main.min.js'],
+				src: ['app/js/modernizr.js', 'app/js/vendor/Box2dWeb-2.1.a.3.min.js', 'app/js/vendor/createjs-2013.12.12.min.js', 'app/js/vendor/foundation.min.js', 'app/js/vendor/jquery.js', 'app/lib/angular/angular.min.js', 'app/lib/angular/angular-route.min.js', 'app/js/Main.min.js'],
 				dest: 'app/js/Box2d.js'
 			}
 		},

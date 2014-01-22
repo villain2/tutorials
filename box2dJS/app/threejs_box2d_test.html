@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Virtual 2-D/3-D Shapes</title>
+    <link rel="stylesheet" type="type/css" href="css/foundation.min.css" />
+    <link rel="stylesheet" type="type/css" href="css/custom.css" />
+
+</head>
+
+<body>
+	<div class="mainContainer" id="mainContainer">
+
+		
+	</div>
+
+	<!-- JAVASCRIPT -->
+	
+    <script src="js/modernizr.js"></script>
+  	<script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/three.min.js"></script>
+    <script src="js/vendor/createjs-2013.12.12.min.js"></script>
+    <script src="js/vendor/Box2dWeb-2.1.a.3.min.js"></script>
+    <script src="js/vendor/foundation.min.js"></script>
+    <!-- In production
+    <script src="js/VirtualShapes.min.js"></script>
+    -->
+
+    <script>
+    	var renderer, scnene, player, initRenderer;
+
+		function init() {
+		  renderer = initRenderer(0x87CEEB);
+
+		  scene = new THREE.Scene;
+
+		  player = new THREE.Mesh(
+		    new THREE.CubeGeometry(20, 50, 10),
+		    new THREE.MeshBasicMaterial({color: 0xB22222})
+		  );
+		  scene.add(player);
+
+		  camera = new THREE.PerspectiveCamera(
+		    75, window.innerWidth / window.innerHeight, 1, 10000
+		  );
+		  camera.position.z = 100;
+		  camera.lookAt(player.position);
+
+		  scene.add(camera);
+		}
+
+		function startPhysics() {
+		  var b2Vec2 = Box2D.Common.Math.b2Vec2
+		    , b2World = Box2D.Dynamics.b2World
+		    , b2FixtureDef = Box2D.Dynamics.b2FixtureDef
+		    , b2BodyDef = Box2D.Dynamics.b2BodyDef
+		    , b2Body = Box2D.Dynamics.b2Body
+		    , b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
+
+		  world = new b2World(
+		    new b2Vec2(0, 10),    //gravity
+		    true                  //allow sleep
+		  );
+
+		  var fixDef = new b2FixtureDef;
+		  fixDef.density = 1.0;
+		  fixDef.friction = 0.5;
+		  fixDef.restitution = 0.2;
+
+		  var bodyDef = new b2BodyDef;
+
+		  //create ground
+		  bodyDef.type = b2Body.b2_staticBody;
+		  bodyDef.position.x = 9;
+		  bodyDef.position.y = 13;
+		  fixDef.shape = new b2PolygonShape;
+		  fixDef.shape.SetAsBox(10, 0.5);
+		  world.CreateBody(bodyDef).CreateFixture(fixDef);
+
+		  // player
+		  bodyDef.type = b2Body.b2_dynamicBody;
+		  fixDef.shape = new b2PolygonShape;
+		  fixDef.shape.SetAsBox(
+		    Math.random() + 0.1 //half width
+		    ,  Math.random() + 0.1 //half height
+		  );
+
+		  bodyDef.position.x = 0;
+		  bodyDef.position.y = 100;
+		  player_fixture = world.CreateBody(bodyDef).CreateFixture(fixDef);
+		}
+
+		function gameStep() {
+		  world.Step(
+		    1 / 60,   //frame-rate
+		    10,       //velocity iterations
+		    10       //position iterations
+		  );
+		  world.ClearForces();
+
+		  var body = player_fixture.GetBody().GetDefinition();
+		  player.position.x = body.position.x;
+		  player.position.y = body.position.y;
+
+		  setTimeout(gameStep, 1000 / 60); // process the game logic
+		                                   // at a target 60 FPS.
+		}
+
+		function startPhysics() {
+		  // ...
+		  world = new b2World(
+		    new b2Vec2(0, -10),    //gravity
+		    true                  //allow sleep
+		  );
+		  // ...
+		}
+		init();
+
+    </script>
+
+	<!-- END JAVASCRIPT -->
+
+</body>
+</html>
