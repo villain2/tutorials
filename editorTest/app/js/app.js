@@ -11,6 +11,8 @@
 
 	EditorTest.init = function (params, callback) {
 
+        console.log('module: ' );
+        console.log(EditorTest.Modules);
 		var instanceID					= EditorTest.instanceCache.length;
 		EditorTest.instanceCache.push(params.dataJSON);
 		EditorTest.ResetInstanceCache.push(JSON.parse(JSON.stringify(params.dataJSON)));

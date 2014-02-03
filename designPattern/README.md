@@ -1,0 +1,1 @@
+Default Angular Design Pattern (Modular).
